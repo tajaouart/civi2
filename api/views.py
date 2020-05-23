@@ -5,4 +5,4 @@ from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse("Azoul Ayouma")
+    return HttpResponse("<h1> Azoul Ayouma </h1>")
