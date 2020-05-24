@@ -1,0 +1,121 @@
+@import url(//db.onlinewebfonts.com/c/a78cfad3beb089a6ce86d4e280fa270b?family=Calibri);
+*{
+    font-family:"Calibri";
+}
+
+body{
+    background-color: #EFF9F2;
+    height: 100%;
+}
+header{
+    background-color: #78A1BB;
+    height: 80px;
+    width: 100%;
+    position: relative;
+    top: 20px;
+    z-index: 1;
+}
+
+.side{
+    width: 30%;
+    background-color: #2F2F3A;
+    height: 100%;
+    position: absolute;
+    left: 4%;
+    top: 0px;
+    z-index: 10;
+}
+
+#name{
+    color: black;
+    font-family: sans-serif;
+    top: 5px;
+    font-size: 50;
+    font-weight: bold;
+    position: relative;
+    left: 40%;
+    /background-color: red;
+}
+
+#status{
+    color: #2F2F3A;
+    font-family: monospace;
+    top: 15px;
+    font-size: 15;
+    position: relative;
+    left: 40%;
+    /background-color: aqua;
+}
+
+#image_container{
+    top: 100px;
+    width: 110px;
+    background-color: black;
+    border-radius: 50%;
+    height: 110px;
+    /border: 2px solid black;
+    position: relative;
+    box-shadow: 0px 0px 10px 2px  #aaaaaa;
+
+}
+
+img{
+    width: 100%;
+    border-radius: 100%;
+    border: 1px normal white;
+}
+.center {
+  margin: auto;
+  width: 50%;
+
+}
+
+
+
+#main{
+    /background-color: red;
+    height: 500px;
+    position: relative;
+    top: 40px;
+    left: 35%;
+    z-index: 11;
+    width: inherit;
+}
+#studies_title{
+    font-family: sans-serif;
+    color: #78A1BB;
+    font-size: 30;
+    font-weight: bold;
+}
+
+
+#studies_body{
+    font-family: sans-serif;
+    font-size: 10;
+    list-style: none;
+}
+
+
+#skills_title{
+    font-family: sans-serif;
+    color: #78A1BB;
+    font-size: 30;
+    font-weight: bold;
+}
+
+#skills_body{
+    font-family: sans-serif;
+    font-size: 10;
+}
+
+section{
+    margin-bottom: 20px;
+}
+
+li {
+   padding:10px 0 0px 0;
+}
+
+.orange{
+    color: #C55A11;
+}
