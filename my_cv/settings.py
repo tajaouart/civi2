@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'api.apps.ApiConfig'
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,7 @@ MEDIA_ROOT = '/home/akselnarif/my_cv/media'
 MEDIA_URL = '/media/'
 STATIC_ROOT = '/home/akselnarif/my_cv/static'
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/api/static/',
+]
