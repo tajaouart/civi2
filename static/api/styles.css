@@ -119,3 +119,38 @@ li {
 .orange{
     color: #C55A11;
 }
+
+
+.side_title{
+    color: #78A1BB;
+    font-weight: bold;
+
+}
+.side_subtitle{
+    position: relative;
+    top: 10px;
+    color: #78A1BB;
+    font-weight: 100;
+    color: #C55A11;
+    padding: 15px 0px 5px 0px;
+
+}
+#personal_information{
+    top: 150px;
+    position: relative;
+    text-align: center;
+}
+
+#interests{
+    top: 200px;
+    position: relative;
+    text-align: center;
+}
+
+.side_body{
+    position: relative;
+    top: 10px;
+    color: white;
+
+
+}
