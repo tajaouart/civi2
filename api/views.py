@@ -2,13 +2,8 @@
 from __future__ import unicode_literals
 
 import weasyprint as weasyprint
-from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from django.template.loader import get_template
-from reportlab.pdfgen import canvas
 from django.http import HttpResponse
-import reportlab
-from django.shortcuts import render
 
 
 def index(request):
