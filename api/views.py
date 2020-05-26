@@ -34,6 +34,5 @@ def html(request):
     context = {
         'latest_question_list': 'latest_question_list',
     }
-    import ipdb;ipdb.sset_trace()
     return HttpResponse(template.render(context, request))
 
