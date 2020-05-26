@@ -10,9 +10,10 @@ body{
 header{
     background-color: #78A1BB;
     height: 80px;
-    width: 100%;
-    position: relative;
-    top: 20px;
+    margin-top: 10px;
+    /width: 100%;
+    /position: relative;
+    /top: 20px;
     z-index: 1;
 }
 
@@ -33,7 +34,7 @@ header{
     font-size: 50;
     font-weight: bold;
     position: relative;
-    left: 40%;
+    padding-left: 40%;
     /background-color: red;
 }
 
@@ -43,7 +44,7 @@ header{
     top: 15px;
     font-size: 15;
     position: relative;
-    left: 40%;
+    padding-left: 40%;
     /background-color: aqua;
 }
 
@@ -71,15 +72,15 @@ img{
 }
 
 
-
 #main{
     /background-color: red;
     height: 500px;
     position: relative;
     top: 40px;
-    left: 35%;
+    margin-left: 35%;
     z-index: 11;
     width: inherit;
+    font-size: 10px;
 }
 #studies_title{
     font-family: sans-serif;
@@ -154,3 +155,8 @@ li {
 
 
 }
+
+@page {
+        size: A4; /* Change from the default size of A4 */
+        margin: 0mm; /* Set margin on each page */
+      }
