@@ -4,9 +4,13 @@ from __future__ import unicode_literals
 import weasyprint as weasyprint
 from django.template import loader
 from django.http import HttpResponse, Http404
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 import json
-from .serializers import ArticleSerializer
+from rest_framework.parsers import FileUploadParser
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from .serializers import ArticleSerializer, FileSerializer
 from .models import Article
 from .serializers import CVSerializer
 from .models import CvJSON, CV
@@ -164,7 +168,6 @@ def generat_cv(html, json_data):
     html_interests = ""
     for x in interests:
         _INTEREST = INTEREST
-        import ipdb; ipdb.set_trace()
         html_interests += _INTEREST.replace(interest_tag, x)
     html = replace(html, set_in_comment(interest_tag), html_interests)
 
@@ -197,20 +200,14 @@ def generat_cv(html, json_data):
     return html
 
 
-
 @csrf_exempt
 def html(request):
     context = {
         'latest_question_list': 'latest_question_list',
     }
-
     template = loader.get_template('api/index.html')
-    import ipdb
-    # ipdb.set_trace()
     html = HttpResponse(template.render(context, request)).content
     html.decode("utf-8")
-
-
 
     if request.method == "POST":
         str_html = str(html)
@@ -226,6 +223,17 @@ class CvViewSet(viewsets.ModelViewSet):
     queryset = CvJSON.objects.all()
     serializer_class = CVSerializer
 
-class ArticleView(viewsets.ModelViewSet):
-    queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
+
+class FileUploadView(APIView):
+    parser_class = (FileUploadParser,)
+
+    def post(self, request, *args, **kwargs):
+
+      file_serializer = FileSerializer(data=request.data)
+
+      if file_serializer.is_valid():
+          file_serializer.save()
+          import  ipdb; ipdb.set_trace()
+          return Response(file_serializer.data, status=status.HTTP_201_CREATED)
+      else:
+          return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)

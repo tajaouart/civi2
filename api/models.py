@@ -1,5 +1,10 @@
 from django.db import models
 
+import os
+
+from my_cv import settings
+from my_cv.settings import BASE_DIR
+
 
 class Project():
     description : models.CharField()
@@ -67,3 +72,12 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+
+class File(models.Model):
+    file = models.FileField(blank=False, null=False)
+
+    def __str__(self):
+        return self.file.name
+
+    def remove(self,):
+        os.remove(os.path.join(os.path.join(BASE_DIR, "media"), self.file.name))

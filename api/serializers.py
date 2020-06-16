@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import CvJSON, Article
+from .models import CvJSON, Article, File
 from django.http import HttpResponse
 
 
@@ -32,3 +32,9 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
 
     # def create(self, validated_data):
     #     return Article.objects.create(**validated_data)
+
+
+class FileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = File
+        fields = "__all__"
