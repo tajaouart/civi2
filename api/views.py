@@ -233,7 +233,6 @@ class FileUploadView(APIView):
 
       if file_serializer.is_valid():
           file_serializer.save()
-          import  ipdb; ipdb.set_trace()
           return Response(file_serializer.data, status=status.HTTP_201_CREATED)
       else:
           return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
