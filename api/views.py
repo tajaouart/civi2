@@ -100,12 +100,6 @@ def index(request):
     response['Content-Disposition'] = 'filename="home_page.pdf"'
     return response
 
-    template = loader.get_template('api/index.html')
-    context = {
-        'latest_question_list': 'latest_question_list',
-    }
-    html =  HttpResponse(template.render(context, request)).content
-    return HttpResponse(html)
 
 
 def set_in_comment(tag):
@@ -211,10 +205,20 @@ def html(request):
 
     if request.method == "POST":
         str_html = str(html)
-        str_html = generat_cv(template.render(context, request), request.body)
+        html = generat_cv(template.render(context, request), request.body)
         # str_html = str(str_html).replace("b'", "", 1)
         # str_html = str_html.replace("\n\n", "")
-        return HttpResponse(str_html)
+        context = {
+            'latest_question_list': 'latest_question_list',
+        }
+        # html = CV.replace_data(html=html)
+
+        # html_template = get_template('api/index.html')
+        pdf_file = weasyprint.HTML(string=html).write_pdf()
+        response = HttpResponse(pdf_file, content_type='application/pdf')
+        response['Content-Disposition'] = 'filename="home_page.pdf"'
+        return response
+
     else:
         return template.render(context, request)
 
