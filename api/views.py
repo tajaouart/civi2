@@ -13,10 +13,11 @@ from rest_framework.views import APIView
 from .serializers import ArticleSerializer, FileSerializer
 from .models import Article
 from .serializers import CVSerializer
-from .models import CvJSON, CV
+from .models import CvJSON, CV, File
 from django.views.decorators.csrf import csrf_exempt
 
 name_tag = "[%name%]"
+image_tag = "[%image%]"
 status_tag = "[%status%]"
 
 ADRESS = """"<div class="side_subtitle">LIEU DE RESIDENCE :</div>
@@ -124,6 +125,9 @@ def generat_cv(html, json_data):
     experiences = loaded_json['experiences']
     skills = loaded_json['skills']
     interests = loaded_json['interests']
+    profile_photo_id = loaded_json['profile_photo_id']
+    image = File.objects.get(pk=10)
+
 
     # personal_information
 
@@ -139,6 +143,8 @@ def generat_cv(html, json_data):
     tel = contact["tel"]
     linkedin = contact["linkedin"]
     website = contact["website"]
+
+    html = replace(html, set_in_comment(image_tag), image.file.url)
 
     html = replace(html, set_in_comment(name_tag), name)
     html = replace(html, set_in_comment(status_tag), status)
