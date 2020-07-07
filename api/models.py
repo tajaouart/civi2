@@ -1,3 +1,4 @@
+from django.core.files.storage import FileSystemStorage
 from django.db import models
 
 import os
@@ -7,8 +8,8 @@ from my_cv.settings import BASE_DIR
 
 
 class Project():
-    description : models.CharField()
-    skills : models.CharField()
+    description: models.CharField()
+    skills: models.CharField()
 
 
 class Experience():
@@ -16,8 +17,8 @@ class Experience():
 
 
 class Language():
-    name : models.CharField()
-    level :models.CharField()
+    name: models.CharField()
+    level: models.CharField()
 
 
 class Contact():
@@ -57,9 +58,10 @@ class CvJSON(models.Model):
 
 
 class Author(models.Model):
-  name = models.CharField(max_length=255)
-  email = models.EmailField()
-  def __str__(self):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+
+    def __str__(self):
         return self.name
 
 
@@ -73,11 +75,14 @@ class Article(models.Model):
         return self.title
 
 
+fs = FileSystemStorage(location=settings.STATIC_ROOT)
+
+
 class File(models.Model):
-    file = models.FileField(blank=False, null=False)
+    file = models.FileField(upload_to="static", storage=fs)
 
     def __str__(self):
         return self.file.name
 
-    def remove(self,):
-        os.remove(os.path.join(os.path.join(BASE_DIR, "media"), self.file.name))
+    def remove(self, ):
+        os.remove(os.path.join(os.path.join(BASE_DIR, "static"), self.file.name))

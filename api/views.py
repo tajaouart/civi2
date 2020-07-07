@@ -125,8 +125,8 @@ def generat_cv(html, json_data):
     experiences = loaded_json['experiences']
     skills = loaded_json['skills']
     interests = loaded_json['interests']
-    profile_photo_id = loaded_json['profile_photo_id']
-    image = File.objects.get(pk=10)
+    profile_photo_id: int = loaded_json['profile_photo_id']
+    image = File.objects.get(pk=profile_photo_id)
 
 
     # personal_information
@@ -144,7 +144,8 @@ def generat_cv(html, json_data):
     linkedin = contact["linkedin"]
     website = contact["website"]
 
-    html = replace(html, set_in_comment(image_tag), image.file.url)
+    html = replace(html, set_in_comment(image_tag), "http://akselnarif.pythonanywhere.com/"+image.file.name)
+    import ipdb; ipdb.set_trace()
 
     html = replace(html, set_in_comment(name_tag), name)
     html = replace(html, set_in_comment(status_tag), status)
