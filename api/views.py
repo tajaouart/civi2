@@ -144,7 +144,8 @@ def generat_cv(html, json_data):
     linkedin = contact["linkedin"]
     website = contact["website"]
 
-    html = replace(html, set_in_comment(image_tag), "http://akselnarif.pythonanywhere.com/"+image.file.name)
+    html = replace(html, set_in_comment(image_tag), "http://localhost:8000/"+image.file.name)
+    import ipdb; ipdb.set_trace()
 
     html = replace(html, set_in_comment(name_tag), name)
     html = replace(html, set_in_comment(status_tag), status)
