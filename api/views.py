@@ -145,7 +145,7 @@ def generat_cv(html, json_data):
     website = contact["website"]
 
 
-    html = replace(html, set_in_comment(image_tag), "/"+image.file.name)
+    html = replace(html, set_in_comment(image_tag), image.file.name)
 
     html = replace(html, set_in_comment(name_tag), name)
     html = replace(html, set_in_comment(status_tag), status)
