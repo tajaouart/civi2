@@ -96,7 +96,7 @@ def index(request):
     # html = CV.replace_data(html=html)
 
     # html_template = get_template('api/index.html')
-    pdf_file = weasyprint.HTML(string=html).write_pdf()
+    pdf_file = weasyprint.HTML(string=html, base_url=request.build_absolute_uri()).write_pdf()
     response = HttpResponse(pdf_file, content_type='application/pdf')
     response['Content-Disposition'] = 'filename="home_page.pdf"'
     return response
@@ -221,7 +221,7 @@ def html(request):
         # html = CV.replace_data(html=html)
 
         # html_template = get_template('api/index.html')
-        pdf_file = weasyprint.HTML(string=html).write_pdf()
+        pdf_file = weasyprint.HTML(string=html, base_url=request.build_absolute_uri()).write_pdf()
         response = HttpResponse(pdf_file, content_type='application/pdf')
         response['Content-Disposition'] = 'filename="home_page.pdf"'
         return response
