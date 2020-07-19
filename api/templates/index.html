@@ -1,0 +1,9 @@
+{% if photo %}
+    <ul>
+
+        <li><a href="/api/{{ photo.id }}/">{{ photo.imageFile.name }}</a></li>
+        <img src="{{ media_url }}{{ photo.imageFile.name }}">
+    </ul>
+{% else %}
+    <p>No Photos are available.</p>
+{% endif %}

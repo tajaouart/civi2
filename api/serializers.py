@@ -1,40 +1,16 @@
 from rest_framework import serializers
 
-from .models import CvJSON, Article, File
-from django.http import HttpResponse
-
-
-# class CVSerializer(serializers.HyperlinkedModelSerializer):
-#     # json = serializers.CharField()
-#     class Meta:
-#         model = CvJSON
-#         fields = ('json',)
+from .models import CvJSON, ProfilePhoto
 
 
 class CVSerializer(serializers.Serializer):
-    
     json = serializers.CharField()
+
     def create(self, cv: CvJSON):
         pass
-    
-
-        
-class ArticleSerializer(serializers.HyperlinkedModelSerializer):
-
-    class Meta:
-        model = Article
-        fields = ('title', 'description', 'body', 'author_id')
-
-    # title = serializers.CharField(max_length=120)
-    # description = serializers.CharField()
-    # body = serializers.CharField()
-    # author_id = serializers.IntegerField()
-
-    # def create(self, validated_data):
-    #     return Article.objects.create(**validated_data)
 
 
 class FileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = File
+        model = ProfilePhoto
         fields = "__all__"
