@@ -19,11 +19,11 @@ name_tag = "[%name%]"
 image_tag = "[%image%]"
 status_tag = "[%status%]"
 
-ADRESS = """"<div class="side_subtitle">LIEU DE RESIDENCE :</div>
+ADRESS = """<div class="side_subtitle">LIEU DE RESIDENCE :</div>
             <div class="side_body">[%adress%]</div> """
 adress_tag = "[%adress%]"
 
-BORN_IN = """"<div class="side_subtitle">LIEU DE NAISSANCE :</div>
+BORN_IN = """<div class="side_subtitle">LIEU DE NAISSANCE :</div>
             <div class="side_body">[%born_in%]</div>"""
 born_in_tag = "[%born_in%]<"
 
