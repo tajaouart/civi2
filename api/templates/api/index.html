@@ -195,8 +195,11 @@ li {
         <div>
            <div class="center" id="image_container">
 
-               {% load static %}
-            <img src="{% static '<!--[%image%]-->' %}">
+
+               <img src="{{ photo_full_url }}" alt="media_root">
+
+
+
         </div>
 
         </div>
@@ -219,7 +222,7 @@ li {
             <!--[%linkedin%]-->
 
             <!--[%tel%]-->
-            
+
         </div>
 
         <div id="interests">
@@ -228,7 +231,7 @@ li {
             <!--[%interest%]-->
 
         </div>
-        
+
     </div>
 
     <div id="main">
@@ -255,7 +258,7 @@ li {
         </div>
 
         </section>
-        
+
         <section>
 
          <div id="studies_title">Langues :</div>
@@ -266,11 +269,11 @@ li {
                 <!--[%language%]-->
 
             </ul>
-            
+
         </div>
 
         </section>
-        
+
         <section>
          <div id="studies_title">EXPERIENCES PROFESSIONNELLES :</div>
 
@@ -280,7 +283,7 @@ li {
                 <!--[%project%]-->
 
             </ul>
-            
+
         </div>
 
         </section>

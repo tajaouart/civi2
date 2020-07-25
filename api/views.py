@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 import json
 from django.template import loader
+from django.template.loader import render_to_string
 from rest_framework import status, viewsets
 from rest_framework.parsers import FileUploadParser
 from rest_framework.response import Response
@@ -76,20 +77,22 @@ html = ""
 
 
 def index(request):
-    photo = ProfilePhoto.objects.get(pk=1)
+    photo = ProfilePhoto.objects.get(pk=16)
+    photo_full_url = request.build_absolute_uri(photo.imageFile.url)
     context = {
         'photo': photo,
         'media_root': MEDIA_ROOT,
-        'media_url': MEDIA_URL
+        'media_url': MEDIA_URL,
+        'photo_full_url': photo_full_url,
     }
 
     template = loader.get_template('cv.html')
-    html = HttpResponse(template.render(context, request)).content
+    html = render_to_string('cv.html', context)
 
     # html = CV.replace_data(html=html)
 
     # html_template = get_template('api/index.html')
-    pdf_file = weasyprint.HTML(string=html, base_url=request.build_absolute_uri()).write_pdf()
+    pdf_file = weasyprint.HTML(string=html).write_pdf()
     response = HttpResponse(pdf_file, content_type='application/pdf')
     response['Content-Disposition'] = 'filename="home_page.pdf"'
     return response
@@ -229,9 +232,12 @@ def html(request):
     if request.method == "POST":
         pk = json.loads(request.body)['profile_photo_id']
         photo = ProfilePhoto.objects.get(pk=pk)
+        photo_full_url = request.build_absolute_uri(photo.imageFile.url)
         context = {
             'photo': photo,
-            'media_url': MEDIA_URL
+            'media_root': MEDIA_ROOT,
+            'media_url': MEDIA_URL,
+            'photo_full_url': photo_full_url,
         }
         html = generat_cv(template.render(context, request), request.body)
         pdf_file = weasyprint.HTML(string=html, base_url=request.build_absolute_uri()).write_pdf()

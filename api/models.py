@@ -57,4 +57,3 @@ class CV():
     languages: [Language]
     experiences: Experience
 
-
